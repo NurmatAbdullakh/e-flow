@@ -1,10 +1,7 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { Dashboard } from "./components";
-import { Paths } from "./paths";
 import { LoadingSpinner } from "./LoadingSpinner";
-import TopHalalStock from "../UI/pages/TopHalalStock";
-
-const MarketNews = lazy(() => import("../UI/pages/MarketNews"));
+import { Paths } from "./paths";
 
 export const OpenRoutes = [
   {
@@ -12,23 +9,6 @@ export const OpenRoutes = [
     element: (
       <Suspense fallback={<LoadingSpinner />}>
         <Dashboard />
-      </Suspense>
-    ),
-  },
-  {
-    path: Paths.MARKET_NEWS,
-    element: (
-      <Suspense fallback={<LoadingSpinner />}>
-        <MarketNews />
-      </Suspense>
-    ),
-  },
-
-  {
-    path: Paths.TOP_HALAL_STOCKS,
-    element: (
-      <Suspense fallback={<LoadingSpinner />}>
-        <TopHalalStock />
       </Suspense>
     ),
   },

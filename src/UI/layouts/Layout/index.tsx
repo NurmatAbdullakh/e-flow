@@ -1,9 +1,9 @@
 import { Layout as AntLayout } from "antd";
 import { createUseStyles } from "react-jss";
 import { Outlet, useLocation } from "react-router-dom";
-import { Sidebar } from "./SideBar";
 import { Header } from "./Header";
-import { SidebarProvider, useSidebar } from "./SideBar/SidebarContext";
+import { Sidebar } from "./SideBar";
+import { SidebarProvider } from "./SideBar/SidebarContext";
 
 const { Content } = AntLayout;
 
@@ -47,7 +47,6 @@ const useStyles = createUseStyles({
 const LayoutContent = () => {
   const classes = useStyles();
   const location = useLocation();
-  const { isCollapsed } = useSidebar();
 
   return (
     <AntLayout className={classes.layout}>

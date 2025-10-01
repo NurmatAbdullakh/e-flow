@@ -3,7 +3,6 @@ import { Card, Typography } from "antd";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 import {
   LineChart,
-  Line,
   Area,
   ResponsiveContainer,
   XAxis,
@@ -117,9 +116,6 @@ export const StockCard: React.FC<StockCardProps> = ({
     ? classes.positivePercentage
     : classes.negativePercentage;
   const strokeColor = isPositive ? "#52c41a" : "#ff4d4f";
-  const fillColor = isPositive
-    ? "rgba(82, 196, 26, 0.1)"
-    : "rgba(255, 77, 79, 0.1)";
 
   return (
     <Card className={classes.stockCard} bodyStyle={{ padding: "20px" }}>

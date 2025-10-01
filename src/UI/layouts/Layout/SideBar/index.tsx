@@ -1,11 +1,4 @@
-import {
-  Layout as AntLayout,
-  Button,
-  Drawer,
-  Flex,
-  Image,
-  Tooltip,
-} from "antd";
+import { Layout as AntLayout, Button, Drawer, Flex, Image } from "antd";
 import { useState } from "react";
 import { createUseStyles } from "react-jss";
 import { Link } from "react-router-dom";
@@ -17,8 +10,8 @@ import { useIsMobile } from "../../../../hooks/useIsMobile";
 import { Paths } from "../../../../router/paths";
 import { Menu } from "./Menu";
 import { menuItems } from "./menuItems";
-import { useAuth } from "../../../../api/auth/AuthProvider";
 import { useSidebar } from "./SidebarContext";
+import classNames from "classnames";
 
 const useStyle = createUseStyles(() => ({
   header: {
@@ -36,7 +29,11 @@ const useStyle = createUseStyles(() => ({
   },
   logo: {
     marginBottom: "20px",
-    height: "32px",
+    height: "120px",
+    "& img": {
+      width: "260px",
+      height: "100%",
+    },
   },
   sidebar: {
     position: "relative",
@@ -44,6 +41,10 @@ const useStyle = createUseStyles(() => ({
     left: "4px",
     zIndex: 4,
     transition: "all 0.3s ease",
+    alignSelf: "stretch",
+    "& .ant-layout-sider": {
+      height: "100%",
+    },
   },
   toggleButton: {
     position: "absolute",
@@ -75,16 +76,15 @@ const useStyle = createUseStyles(() => ({
     marginBottom: "20px",
   },
   logoImage: {
-    transition: "all 0.3s ease",
+    transition: "all 0.3s ease-in-out",
   },
   logoImageCollapsed: {
-    width: "32px",
+    width: "80px",
     height: "32px",
   },
 }));
 
 export const Sidebar = () => {
-  const { user } = useAuth();
   const { isCollapsed, toggleSidebar } = useSidebar();
   const classes = useStyle();
   const isMobile = useIsMobile();
@@ -98,7 +98,7 @@ export const Sidebar = () => {
       <Flex justify="space-between" align="center" className={classes.header}>
         <Image
           preview={false}
-          src="/Logo.svg"
+          src="/Logo.jpeg"
           alt="logo"
           width={160}
           height={32}
@@ -117,9 +117,7 @@ export const Sidebar = () => {
         open={drawerOpen}
         width={300}
       >
-        {menuItems[
-          (user?.role?.name as keyof typeof menuItems) || "unauthorized"
-        ]?.map((item) => (
+        {menuItems?.map((item) => (
           <Menu items={item} />
         ))}
       </Drawer>
@@ -144,20 +142,12 @@ export const Sidebar = () => {
         <div className={classes.contentBlock}>
           <div className={isCollapsed ? classes.logoCollapsed : classes.logo}>
             <Link to={Paths.HOME}>
-              <motion.img
-                src="/Logo.svg"
+              <img
+                src="/Logo.jpeg"
                 alt="logo"
-                className={`${classes.logoImage} ${
-                  isCollapsed ? classes.logoImageCollapsed : ""
-                }`}
-                animate={{
-                  width: isCollapsed ? 32 : "auto",
-                  height: isCollapsed ? 32 : "auto",
-                }}
-                transition={{
-                  duration: 0.3,
-                  ease: "easeInOut",
-                }}
+                className={classNames(classes.logoImage, {
+                  [classes.logoImageCollapsed]: isCollapsed,
+                })}
               />
             </Link>
           </div>
@@ -169,9 +159,7 @@ export const Sidebar = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {menuItems[
-                  (user?.role?.name as keyof typeof menuItems) || "unauthorized"
-                ]?.map((item) => (
+                {menuItems?.map((item) => (
                   <Menu items={item} isCollapsed={false} />
                 ))}
               </motion.div>
@@ -183,27 +171,21 @@ export const Sidebar = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
             >
-              {menuItems[
-                (user?.role?.name as keyof typeof menuItems) || "unauthorized"
-              ]?.map((item) => (
+              {menuItems?.map((item) => (
                 <Menu items={item} isCollapsed={true} />
               ))}
             </motion.div>
           )}
         </div>
-        <Tooltip
-          title={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          placement="right"
+
+        <motion.div
+          className={classes.toggleButton}
+          onClick={toggleSidebar}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <motion.div
-            className={classes.toggleButton}
-            onClick={toggleSidebar}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          </motion.div>
-        </Tooltip>
+          {isCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </motion.div>
       </Sider>
     </motion.div>
   );
