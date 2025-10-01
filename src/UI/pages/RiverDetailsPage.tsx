@@ -149,7 +149,7 @@ const RiverDetailsPage: React.FC = () => {
   const classes = useStyles();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { setRiverContext, clearRiverContext, riverId } = useRiverSidebar();
+  const { setRiverContext, clearRiverContext } = useRiverSidebar();
 
   const river = mockRivers.find((r) => r.id === id);
 

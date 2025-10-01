@@ -1,13 +1,13 @@
 import { Spin } from "antd";
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "../UI/layouts/Layout";
-import { Paths } from "./paths";
 import { PageTitle } from "../UI/components/PageTitle/PageTitle";
+import { Layout } from "../UI/layouts/Layout";
 import RiverDetailsPage from "../UI/pages/RiverDetailsPage";
-import RiversPage from "../UI/pages/RiversPage";
 import RiverHydroStationsPage from "../UI/pages/RiverHydroStationsPage";
 import RiverMeteoStationsPage from "../UI/pages/RiverMeteoStationsPage";
+import RiversPage from "../UI/pages/RiversPage";
+import { Paths } from "./paths";
 
 // Create a reusable loading component
 const LoadingSpinner = () => (
