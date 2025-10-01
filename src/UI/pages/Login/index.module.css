@@ -1,0 +1,32 @@
+.authFormContainer {
+    max-width: 400px;
+    width: 100%;
+}
+
+.authForm {
+    margin-bottom: 2rem;
+}
+
+.authFooter {
+    text-align: center;
+}
+
+.authRight {
+    height: 100vh;
+}
+
+.authImage {
+    height: 100%;
+    width: 100%;
+    background-color: #53389E; /* Using the purple color from the logo */
+    background-image: url('https://images.unsplash.com/photo-1579547945413-497e1b99dac0?q=80&w=1000');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .authFormContainer {
+        max-width: 100%;
+    }
+}

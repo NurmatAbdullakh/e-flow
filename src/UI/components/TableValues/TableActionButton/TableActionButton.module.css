@@ -1,0 +1,19 @@
+.button {
+  border-radius: 6px;
+  border: none;
+  box-shadow: none;
+  transition: 0.2s;
+  padding: 6px;
+  width: 28px;
+  height: 28px;
+}
+
+.button:hover {
+  background: #fafafa !important;
+  color: #717680 !important;
+}
+
+.button:hover svg path {
+  transition: 0.2s;
+  stroke: #717680;
+}

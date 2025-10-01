@@ -1,0 +1,15 @@
+.avatar{
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.name{
+    color:  #181D27;
+    font-weight: 500;
+    line-height: 20px; 
+}
+
+.email{
+    color:  #535862;
+    line-height: 20px; 
+}

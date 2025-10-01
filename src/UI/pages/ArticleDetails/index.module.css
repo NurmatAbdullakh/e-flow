@@ -1,0 +1,19 @@
+.container{
+    max-width: 656px;
+    margin: 0 auto;
+}
+
+.recommendedSection{
+    margin-top: 40px;
+}
+.recommendedTitle{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 38px; 
+}
+
+.cardGrid{
+    display: grid;
+    gap: 20px;
+
+}

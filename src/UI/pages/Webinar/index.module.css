@@ -1,0 +1,47 @@
+.body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    height: calc(100vh - 250px);
+    overflow: auto;
+    align-items: start;
+}
+
+.categoriesSelect{
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: calc( 100vh - 270px );
+        overflow: auto;
+    }
+    .divider{
+        display: none;
+    }
+
+    .cards{
+        height: 100%;
+    }
+
+    .left{
+        display: none;
+    }
+    .top{
+        margin-bottom: 32px;
+    }
+    .categoriesSelect{
+        display: block;
+        margin-bottom: 24px;
+    }
+}
+

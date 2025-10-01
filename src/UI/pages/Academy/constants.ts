@@ -1,0 +1,175 @@
+import { type Category, type Course } from "./types";
+
+export const categories: Category[] = [
+  {
+    id: 1,
+    name: "View all",
+  },
+  {
+    id: 2,
+    name: "Finance Fundamentals",
+  },
+  {
+    id: 3,
+    name: "Stock Screening",
+  },
+  {
+    id: 4,
+    name: "Strategies",
+  },
+  {
+    id: 5,
+    name: "Instruments",
+  },
+  {
+    id: 6,
+    name: "Risk Management",
+  },
+  {
+    id: 7,
+    name: "Case Studies",
+  },
+];
+
+export const courses: Course[] = [
+  {
+    id: 1,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Strategies",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-15",
+    duration: "8 hours",
+    progress: 75,
+    enrolledStudents: 245,
+    rating: 4.8,
+  },
+  {
+    id: 2,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Fundamentals",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Draft",
+    createdAt: "2024-01-14",
+    duration: "6 hours",
+    progress: 0,
+    enrolledStudents: 0,
+    rating: 0,
+  },
+  {
+    id: 3,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Risk Management",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-13",
+    duration: "10 hours",
+    progress: 90,
+    enrolledStudents: 189,
+    rating: 4.9,
+  },
+  {
+    id: 4,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Instruments",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-12",
+    duration: "5 hours",
+    progress: 60,
+    enrolledStudents: 156,
+    rating: 4.6,
+  },
+  {
+    id: 5,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Strategies",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Draft",
+    createdAt: "2024-01-11",
+    duration: "12 hours",
+    progress: 0,
+    enrolledStudents: 0,
+    rating: 0,
+  },
+  {
+    id: 6,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Fundamentals",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-10",
+    duration: "7 hours",
+    progress: 45,
+    enrolledStudents: 203,
+    rating: 4.7,
+  },
+  {
+    id: 7,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Risk Management",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-09",
+    duration: "9 hours",
+    progress: 80,
+    enrolledStudents: 178,
+    rating: 4.9,
+  },
+  {
+    id: 8,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Instruments",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Draft",
+    createdAt: "2024-01-08",
+    duration: "4 hours",
+    progress: 0,
+    enrolledStudents: 0,
+    rating: 0,
+  },
+  {
+    id: 9,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Risk Management",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-07",
+    duration: "11 hours",
+    progress: 95,
+    enrolledStudents: 267,
+    rating: 4.8,
+  },
+  {
+    id: 10,
+    title:
+      "Asia stocks rise as markets weigh stability of the Iran-Israel ceasefire",
+    category: "Instruments",
+    image: "/Image.png",
+    author: "Nurmuhammad Ismoilov",
+    status: "Published",
+    createdAt: "2024-01-06",
+    duration: "6 hours",
+    progress: 30,
+    enrolledStudents: 134,
+    rating: 4.5,
+  },
+];

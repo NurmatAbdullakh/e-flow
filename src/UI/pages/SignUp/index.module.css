@@ -1,0 +1,12 @@
+.authFormContainer {
+    max-width: 400px;
+    width: 100%;
+}
+
+.authForm {
+    margin-bottom: 2rem;
+}
+
+.authFooter {
+    text-align: center;
+}

@@ -1,0 +1,37 @@
+
+.categories {
+    border-radius: 12px;
+    border: 1px solid  #E9EAEB;
+    padding: 16px;
+}
+
+.categories .categoriesTitle{
+    color: #6941C6;
+    font-style: normal;
+    font-weight: 600;
+    line-height:  20px;
+    margin-bottom: 20px;
+}
+
+.categories .categoriesList{
+    display: grid;
+    gap: 4px;
+}
+
+.categories .categoriesListItem{
+    border-radius:  6px;
+    padding:  8px  12px;
+    align-items: center;
+    gap:  8px;
+    color:  #717680;
+    font-size:  16px;
+    font-weight: 600;
+    line-height:  24px; 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.categories .categoriesListItem.active{
+    background:  #F9F5FF;
+    color: #6941C6;
+}
