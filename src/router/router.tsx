@@ -1,5 +1,5 @@
 import { Spin } from "antd";
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../UI/layouts/Layout";
 import { Paths } from "./paths";
@@ -21,15 +21,21 @@ const LoadingSpinner = () => (
   </div>
 );
 
-// Lazy load auth-related pages
-// const Login = lazy(() => import("../UI/pages/Login"));
+// Lazy load pages
+const Rivers = lazy(() => import("../UI/pages/RiversPage"));
+const RiverDetails = lazy(() => import("../UI/pages/RiverDetailsPage"));
+const RiverHydroStations = lazy(
+  () => import("../UI/pages/RiverHydroStationsPage")
+);
+const RiverMeteoStations = lazy(
+  () => import("../UI/pages/RiverMeteoStationsPage")
+);
 
 // Dashboard and other components
 const Dashboard = () => <PageTitle>Dashboard Page </PageTitle>;
 const Map = () => <PageTitle>Map Page</PageTitle>;
 const Calculator = () => <PageTitle>Calculator Page</PageTitle>;
 const Data = () => <PageTitle>Data Page</PageTitle>;
-const Rivers = () => <PageTitle>Rivers Page</PageTitle>;
 const About = () => <PageTitle>About Page</PageTitle>;
 const NotFound = () => <PageTitle>NotFound Page</PageTitle>;
 
@@ -78,6 +84,30 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingSpinner />}>
             <Rivers />
+          </Suspense>
+        ),
+      },
+      {
+        path: Paths.RIVER_DETAILS,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <RiverDetails />
+          </Suspense>
+        ),
+      },
+      {
+        path: Paths.RIVER_HYDRO_STATIONS,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <RiverHydroStations />
+          </Suspense>
+        ),
+      },
+      {
+        path: Paths.RIVER_METEO_STATIONS,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <RiverMeteoStations />
           </Suspense>
         ),
       },

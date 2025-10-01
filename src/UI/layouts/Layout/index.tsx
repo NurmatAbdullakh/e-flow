@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Sidebar } from "./SideBar";
 import { SidebarProvider } from "./SideBar/SidebarContext";
+import { RiverSidebarProvider } from "./SideBar/RiverSidebarContext";
 
 const { Content } = AntLayout;
 
@@ -64,7 +65,9 @@ const LayoutContent = () => {
 export const Layout = () => {
   return (
     <SidebarProvider>
-      <LayoutContent />
+      <RiverSidebarProvider>
+        <LayoutContent />
+      </RiverSidebarProvider>
     </SidebarProvider>
   );
 };

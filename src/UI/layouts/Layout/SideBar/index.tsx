@@ -11,6 +11,8 @@ import { Paths } from "../../../../router/paths";
 import { Menu } from "./Menu";
 import { menuItems } from "./menuItems";
 import { useSidebar } from "./SidebarContext";
+import { useRiverSidebar } from "./RiverSidebarContext";
+import { RiverMenu } from "./RiverMenu";
 import classNames from "classnames";
 
 const useStyle = createUseStyles(() => ({
@@ -86,6 +88,7 @@ const useStyle = createUseStyles(() => ({
 
 export const Sidebar = () => {
   const { isCollapsed, toggleSidebar } = useSidebar();
+  const { riverName } = useRiverSidebar();
   const classes = useStyle();
   const isMobile = useIsMobile();
 
@@ -159,9 +162,13 @@ export const Sidebar = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {menuItems?.map((item) => (
-                  <Menu items={item} isCollapsed={false} />
-                ))}
+                {riverName ? (
+                  <RiverMenu isCollapsed={false} />
+                ) : (
+                  menuItems?.map((item) => (
+                    <Menu items={item} isCollapsed={false} />
+                  ))
+                )}
               </motion.div>
             )}
           </AnimatePresence>
@@ -171,9 +178,13 @@ export const Sidebar = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
             >
-              {menuItems?.map((item) => (
-                <Menu items={item} isCollapsed={true} />
-              ))}
+              {riverName ? (
+                <RiverMenu isCollapsed={true} />
+              ) : (
+                menuItems?.map((item) => (
+                  <Menu items={item} isCollapsed={true} />
+                ))
+              )}
             </motion.div>
           )}
         </div>
