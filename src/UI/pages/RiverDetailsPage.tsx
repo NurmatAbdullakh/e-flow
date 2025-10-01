@@ -1,15 +1,14 @@
-import React, { useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { Button, Card, Descriptions, Typography, Space, Divider } from "antd";
 import {
   ArrowLeftOutlined,
   EnvironmentOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
+import { Button, Card, Descriptions, Divider, Space, Typography } from "antd";
+import React, { useEffect } from "react";
 import { createUseStyles } from "react-jss";
+import { useNavigate, useParams } from "react-router-dom";
 import { Color } from "../../assets/colors";
 import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
-import { PathGenerators } from "../../router/paths";
 
 const { Title, Text } = Typography;
 
@@ -73,7 +72,6 @@ const useStyles = createUseStyles({
   pageContainer: {
     padding: "24px",
     backgroundColor: "#f5f5f5",
-    minHeight: "100vh",
   },
   header: {
     display: "flex",
@@ -204,11 +202,7 @@ const RiverDetailsPage: React.FC = () => {
           Back to Rivers
         </Button>
         <div className={classes.riverInfo}>
-          {riverId && (
-            <Link to={PathGenerators.RIVER_DETAILS(riverId)}>
-              {/* <h1 className={classes.riverName}>{river.name}</h1> */}
-            </Link>
-          )}
+          <h1 className={classes.riverName}>{river.name}</h1>
           <div className={classes.riverLocation}>
             <EnvironmentOutlined />
             <span>{river.country}</span>

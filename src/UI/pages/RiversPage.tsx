@@ -74,7 +74,6 @@ const mockRivers: River[] = [
 const useStyles = createUseStyles({
   pageContainer: {
     padding: "24px",
-    minHeight: "100vh",
   },
   pageHeader: {
     display: "flex",

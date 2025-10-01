@@ -14,9 +14,7 @@ import { useRiverSidebar } from "./RiverSidebarContext";
 const { Text } = Typography;
 
 const useStyles = createUseStyles({
-  riverMenuContainer: {
-    padding: "16px 0",
-  },
+  riverMenuContainer: {},
   backButton: {
     width: "100%",
     marginBottom: "16px",

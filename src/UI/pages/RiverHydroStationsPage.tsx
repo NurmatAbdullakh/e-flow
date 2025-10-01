@@ -81,7 +81,6 @@ const useStyles = createUseStyles({
   pageContainer: {
     padding: "24px",
     backgroundColor: "#f5f5f5",
-    minHeight: "100vh",
   },
   header: {
     display: "flex",

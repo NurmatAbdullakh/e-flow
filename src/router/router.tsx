@@ -4,6 +4,10 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../UI/layouts/Layout";
 import { Paths } from "./paths";
 import { PageTitle } from "../UI/components/PageTitle/PageTitle";
+import RiverDetailsPage from "../UI/pages/RiverDetailsPage";
+import RiversPage from "../UI/pages/RiversPage";
+import RiverHydroStationsPage from "../UI/pages/RiverHydroStationsPage";
+import RiverMeteoStationsPage from "../UI/pages/RiverMeteoStationsPage";
 
 // Create a reusable loading component
 const LoadingSpinner = () => (
@@ -22,14 +26,14 @@ const LoadingSpinner = () => (
 );
 
 // Lazy load pages
-const Rivers = lazy(() => import("../UI/pages/RiversPage"));
-const RiverDetails = lazy(() => import("../UI/pages/RiverDetailsPage"));
-const RiverHydroStations = lazy(
-  () => import("../UI/pages/RiverHydroStationsPage")
-);
-const RiverMeteoStations = lazy(
-  () => import("../UI/pages/RiverMeteoStationsPage")
-);
+// const Rivers = lazy(() => import("../UI/pages/RiversPage"));
+// const RiverDetails = lazy(() => import("../UI/pages/RiverDetailsPage"));
+// const RiverHydroStations = lazy(
+//   () => import("../UI/pages/RiverHydroStationsPage")
+// );
+// const RiverMeteoStations = lazy(
+//   () => import("../UI/pages/RiverMeteoStationsPage")
+// );
 
 // Dashboard and other components
 const Dashboard = () => <PageTitle>Dashboard Page </PageTitle>;
@@ -83,7 +87,7 @@ export const router = createBrowserRouter([
         path: Paths.RIVERS,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <Rivers />
+            <RiversPage />
           </Suspense>
         ),
       },
@@ -91,7 +95,7 @@ export const router = createBrowserRouter([
         path: Paths.RIVER_DETAILS,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <RiverDetails />
+            <RiverDetailsPage />
           </Suspense>
         ),
       },
@@ -99,7 +103,7 @@ export const router = createBrowserRouter([
         path: Paths.RIVER_HYDRO_STATIONS,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <RiverHydroStations />
+            <RiverHydroStationsPage />
           </Suspense>
         ),
       },
@@ -107,7 +111,7 @@ export const router = createBrowserRouter([
         path: Paths.RIVER_METEO_STATIONS,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <RiverMeteoStations />
+            <RiverMeteoStationsPage />
           </Suspense>
         ),
       },

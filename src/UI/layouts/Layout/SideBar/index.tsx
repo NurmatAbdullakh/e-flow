@@ -88,7 +88,7 @@ const useStyle = createUseStyles(() => ({
 
 export const Sidebar = () => {
   const { isCollapsed, toggleSidebar } = useSidebar();
-  const { riverName } = useRiverSidebar();
+  const { riverId } = useRiverSidebar();
   const classes = useStyle();
   const isMobile = useIsMobile();
 
@@ -162,7 +162,7 @@ export const Sidebar = () => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                {riverName ? (
+                {riverId ? (
                   <RiverMenu isCollapsed={false} />
                 ) : (
                   menuItems?.map((item) => (
@@ -178,7 +178,7 @@ export const Sidebar = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2 }}
             >
-              {riverName ? (
+              {riverId ? (
                 <RiverMenu isCollapsed={true} />
               ) : (
                 menuItems?.map((item) => (
