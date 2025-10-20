@@ -55,35 +55,35 @@ const mockRivers: River[] = [
     description: "A river in the Sangardak valley with rich water resources",
     status: "active",
   },
-  {
-    id: "5",
-    name: "Boysun river",
-    length: 280,
-    country: "Uzbekistan",
-    continent: "Asia",
-    description:
-      "A river flowing through the Boysun region with historical significance",
-    status: "active",
-  },
-  {
-    id: "6",
-    name: "Denov river",
-    length: 220,
-    country: "Uzbekistan",
-    continent: "Asia",
-    description:
-      "A river in the Denov district providing water for agriculture",
-    status: "active",
-  },
-  {
-    id: "7",
-    name: "Sho'rchi river",
-    length: 165,
-    country: "Uzbekistan",
-    continent: "Asia",
-    description: "A river flowing through the Sho'rchi region",
-    status: "active",
-  },
+  // {
+  //   id: "5",
+  //   name: "Boysun river",
+  //   length: 280,
+  //   country: "Uzbekistan",
+  //   continent: "Asia",
+  //   description:
+  //     "A river flowing through the Boysun region with historical significance",
+  //   status: "active",
+  // },
+  // {
+  //   id: "6",
+  //   name: "Denov river",
+  //   length: 220,
+  //   country: "Uzbekistan",
+  //   continent: "Asia",
+  //   description:
+  //     "A river in the Denov district providing water for agriculture",
+  //   status: "active",
+  // },
+  // {
+  //   id: "7",
+  //   name: "Sho'rchi river",
+  //   length: 165,
+  //   country: "Uzbekistan",
+  //   continent: "Asia",
+  //   description: "A river flowing through the Sho'rchi region",
+  //   status: "active",
+  // },
 ];
 
 const useStyles = createUseStyles({

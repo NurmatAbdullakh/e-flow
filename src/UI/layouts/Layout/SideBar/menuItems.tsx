@@ -20,7 +20,7 @@ const mainMenuItems = [
   },
   {
     key: Paths.CALCULATOR,
-    label: "Calculator",
+    label: "Flow Duration Calculator",
     icon: <BarLineChartDottedIcon />,
   },
   {

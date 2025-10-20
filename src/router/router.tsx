@@ -9,6 +9,7 @@ import RiverMeteoStationsPage from "../UI/pages/RiverMeteoStationsPage";
 import RiversPage from "../UI/pages/RiversPage";
 import HydroDataDetailsPage from "../UI/pages/HydroDataDetailsPage";
 import MeteoDataDetailsPage from "../UI/pages/MeteoDataDetailsPage";
+import CalculatorPage from "../UI/pages/CalculatorPage";
 import { Paths } from "./paths";
 
 // Create a reusable loading component
@@ -40,7 +41,6 @@ const LoadingSpinner = () => (
 // Dashboard and other components
 const Dashboard = () => <PageTitle>Dashboard Page </PageTitle>;
 const Map = () => <PageTitle>Map Page</PageTitle>;
-const Calculator = () => <PageTitle>Calculator Page</PageTitle>;
 const Data = () => <PageTitle>Data Page</PageTitle>;
 const About = () => <PageTitle>About Page</PageTitle>;
 const NotFound = () => <PageTitle>NotFound Page</PageTitle>;
@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
         path: Paths.CALCULATOR,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <Calculator />
+            <CalculatorPage />
           </Suspense>
         ),
       },

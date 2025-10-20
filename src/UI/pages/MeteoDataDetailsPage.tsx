@@ -3,7 +3,7 @@ import {
   EnvironmentOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Space, Typography } from "antd";
+import { Button, Card, Flex, Space, Typography } from "antd";
 import React, { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -199,7 +199,7 @@ const MeteoDataDetailsPage: React.FC = () => {
       </div>
 
       <Card title="Station Information" className={classes.infoCard}>
-        <Space direction="vertical" size="large" style={{ width: "100%" }}>
+        <Flex justify="space-between" style={{ width: "100%" }}>
           <div>
             <Text strong>Station Name:</Text>
             <br />
@@ -242,7 +242,7 @@ const MeteoDataDetailsPage: React.FC = () => {
               Temperature (Max, Mean, Min), Wind Speed, Precipitation
             </Text>
           </div>
-        </Space>
+        </Flex>
       </Card>
 
       <Card title="Meteorological Data" className={classes.contentCard}>
