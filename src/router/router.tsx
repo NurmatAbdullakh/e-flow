@@ -118,6 +118,14 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: Paths.RIVER_METEO_STATIONS,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <RiverMeteoStationsPage />
+          </Suspense>
+        ),
+      },
+      {
         path: Paths.HOME,
         element: (
           <Suspense fallback={<LoadingSpinner />}>

@@ -201,7 +201,7 @@ const HydroDataDetailsPage: React.FC = () => {
       </div>
 
       <Card title="Station Information" className={classes.infoCard}>
-        <Flex justify="space-between" style={{ width: "100%" }}>
+        <Flex style={{ width: "100%" }} wrap="wrap" flex={"1 0 500px"} gap={40}>
           <div>
             <Text strong>Station Name:</Text>
             <br />

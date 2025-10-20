@@ -199,7 +199,7 @@ const MeteoDataDetailsPage: React.FC = () => {
       </div>
 
       <Card title="Station Information" className={classes.infoCard}>
-        <Flex justify="space-between" style={{ width: "100%" }}>
+        <Flex style={{ width: "100%" }} wrap="wrap" gap={40} flex={"1 0 500px"}>
           <div>
             <Text strong>Station Name:</Text>
             <br />
