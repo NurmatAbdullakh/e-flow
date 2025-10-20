@@ -29,15 +29,6 @@ const mockRivers: River[] = [
     status: "active",
   },
   {
-    id: "2",
-    name: "Sangardak river",
-    length: 180,
-    country: "Uzbekistan",
-    continent: "Asia",
-    description: "A river in the Sangardak valley with rich water resources",
-    status: "active",
-  },
-  {
     id: "3",
     name: "Sherobod river",
     length: 320,
@@ -54,6 +45,15 @@ const mockRivers: River[] = [
     continent: "Asia",
     description: "A river flowing through the Xalkadjar region",
     status: "inactive",
+  },
+  {
+    id: "2",
+    name: "Sangardak river",
+    length: 180,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description: "A river in the Sangardak valley with rich water resources",
+    status: "active",
   },
   {
     id: "5",

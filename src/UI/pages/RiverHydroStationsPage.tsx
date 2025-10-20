@@ -1,7 +1,5 @@
 import {
   ArrowLeftOutlined,
-  DeleteOutlined,
-  EditOutlined,
   EnvironmentOutlined,
   GlobalOutlined,
   PlusOutlined,
@@ -16,16 +14,14 @@ import {
   InputNumber,
   message,
   Modal,
-  Popconfirm,
-  Space,
   Table,
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useNavigate, useParams } from "react-router-dom";
 import { Color } from "../../assets/colors";
-import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 import { PathGenerators } from "../../router/paths";
+import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 
 // Hydro station data type
 interface HydroStation {
@@ -288,18 +284,18 @@ const RiverHydroStationsPage: React.FC = () => {
     setIsModalVisible(true);
   };
 
-  // Handle edit station
-  const handleEdit = (record: HydroStation) => {
-    setEditingStation(record);
-    form.setFieldsValue(record);
-    setIsModalVisible(true);
-  };
+  // // Handle edit station
+  // const handleEdit = (record: HydroStation) => {
+  //   setEditingStation(record);
+  //   form.setFieldsValue(record);
+  //   setIsModalVisible(true);
+  // };
 
-  // Handle delete station
-  const handleDelete = (stationId: string) => {
-    setStations(stations.filter((station) => station.id !== stationId));
-    message.success("Hydro station deleted successfully");
-  };
+  // // Handle delete station
+  // const handleDelete = (stationId: string) => {
+  //   setStations(stations.filter((station) => station.id !== stationId));
+  //   message.success("Hydro station deleted successfully");
+  // };
 
   // Handle modal submit
   const handleModalSubmit = async () => {
@@ -378,47 +374,47 @@ const RiverHydroStationsPage: React.FC = () => {
       key: "yearBuilt",
       sorter: (a: HydroStation, b: HydroStation) => a.yearBuilt - b.yearBuilt,
     },
-    {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
-      render: (status: string) => (
-        <span
-          className={`${classes.statusTag} ${
-            status === "operational"
-              ? classes.operationalStatus
-              : classes.maintenanceStatus
-          }`}
-        >
-          {status}
-        </span>
-      ),
-    },
-    {
-      title: "Actions",
-      key: "actions",
-      render: (_: any, record: HydroStation) => (
-        <Space>
-          <Button
-            type="link"
-            icon={<EditOutlined />}
-            onClick={() => handleEdit(record)}
-          >
-            Edit
-          </Button>
-          <Popconfirm
-            title="Are you sure you want to delete this hydro station?"
-            onConfirm={() => handleDelete(record.id)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button type="link" danger icon={<DeleteOutlined />}>
-              Delete
-            </Button>
-          </Popconfirm>
-        </Space>
-      ),
-    },
+    // {
+    //   title: "Status",
+    //   dataIndex: "status",
+    //   key: "status",
+    //   render: (status: string) => (
+    //     <span
+    //       className={`${classes.statusTag} ${
+    //         status === "operational"
+    //           ? classes.operationalStatus
+    //           : classes.maintenanceStatus
+    //       }`}
+    //     >
+    //       {status}
+    //     </span>
+    //   ),
+    // },
+    // {
+    //   title: "Actions",
+    //   key: "actions",
+    //   render: (_: any, record: HydroStation) => (
+    //     <Space>
+    //       <Button
+    //         type="link"
+    //         icon={<EditOutlined />}
+    //         onClick={() => handleEdit(record)}
+    //       >
+    //         Edit
+    //       </Button>
+    //       <Popconfirm
+    //         title="Are you sure you want to delete this hydro station?"
+    //         onConfirm={() => handleDelete(record.id)}
+    //         okText="Yes"
+    //         cancelText="No"
+    //       >
+    //         <Button type="link" danger icon={<DeleteOutlined />}>
+    //           Delete
+    //         </Button>
+    //       </Popconfirm>
+    //     </Space>
+    //   ),
+    // },
   ];
 
   return (

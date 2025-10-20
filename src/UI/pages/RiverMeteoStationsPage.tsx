@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  Button,
-  Card,
-  Table,
-  Space,
-  Modal,
-  Form,
-  Input,
-  InputNumber,
-  message,
-  Popconfirm,
-  Flex,
-} from "antd";
 import {
   ArrowLeftOutlined,
   EnvironmentOutlined,
   GlobalOutlined,
   PlusOutlined,
-  EditOutlined,
-  DeleteOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import {
+  Button,
+  Card,
+  Flex,
+  Form,
+  Input,
+  InputNumber,
+  message,
+  Modal,
+  Table,
+} from "antd";
+import React, { useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
+import { useNavigate, useParams } from "react-router-dom";
 import { Color } from "../../assets/colors";
-import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 import { PathGenerators } from "../../router/paths";
+import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 
 // Meteo station data type
 interface MeteoStation {
@@ -284,17 +280,17 @@ const RiverMeteoStationsPage: React.FC = () => {
   };
 
   // Handle edit station
-  const handleEdit = (record: MeteoStation) => {
-    setEditingStation(record);
-    form.setFieldsValue(record);
-    setIsModalVisible(true);
-  };
+  // const handleEdit = (record: MeteoStation) => {
+  //   setEditingStation(record);
+  //   form.setFieldsValue(record);
+  //   setIsModalVisible(true);
+  // };
 
   // Handle delete station
-  const handleDelete = (stationId: string) => {
-    setStations(stations.filter((station) => station.id !== stationId));
-    message.success("Meteo station deleted successfully");
-  };
+  // const handleDelete = (stationId: string) => {
+  //   setStations(stations.filter((station) => station.id !== stationId));
+  //   message.success("Meteo station deleted successfully");
+  // };
 
   // Handle modal submit
   const handleModalSubmit = async () => {
@@ -378,47 +374,47 @@ const RiverMeteoStationsPage: React.FC = () => {
       sorter: (a: MeteoStation, b: MeteoStation) =>
         a.established - b.established,
     },
-    {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
-      render: (status: string) => (
-        <span
-          className={`${classes.statusTag} ${
-            status === "active"
-              ? classes.activeStatus
-              : classes.maintenanceStatus
-          }`}
-        >
-          {status}
-        </span>
-      ),
-    },
-    {
-      title: "Actions",
-      key: "actions",
-      render: (_: any, record: MeteoStation) => (
-        <Space>
-          <Button
-            type="link"
-            icon={<EditOutlined />}
-            onClick={() => handleEdit(record)}
-          >
-            Edit
-          </Button>
-          <Popconfirm
-            title="Are you sure you want to delete this meteo station?"
-            onConfirm={() => handleDelete(record.id)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button type="link" danger icon={<DeleteOutlined />}>
-              Delete
-            </Button>
-          </Popconfirm>
-        </Space>
-      ),
-    },
+    // {
+    //   title: "Status",
+    //   dataIndex: "status",
+    //   key: "status",
+    //   render: (status: string) => (
+    //     <span
+    //       className={`${classes.statusTag} ${
+    //         status === "active"
+    //           ? classes.activeStatus
+    //           : classes.maintenanceStatus
+    //       }`}
+    //     >
+    //       {status}
+    //     </span>
+    //   ),
+    // },
+    // {
+    //   title: "Actions",
+    //   key: "actions",
+    //   render: (_: any, record: MeteoStation) => (
+    //     <Space>
+    //       <Button
+    //         type="link"
+    //         icon={<EditOutlined />}
+    //         onClick={() => handleEdit(record)}
+    //       >
+    //         Edit
+    //       </Button>
+    //       <Popconfirm
+    //         title="Are you sure you want to delete this meteo station?"
+    //         onConfirm={() => handleDelete(record.id)}
+    //         okText="Yes"
+    //         cancelText="No"
+    //       >
+    //         <Button type="link" danger icon={<DeleteOutlined />}>
+    //           Delete
+    //         </Button>
+    //       </Popconfirm>
+    //     </Space>
+    //   ),
+    // },
   ];
 
   return (
