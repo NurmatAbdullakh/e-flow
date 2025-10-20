@@ -33,6 +33,24 @@ const mockMeteoStations = [
     elevation: 850,
     established: 1988,
   },
+  {
+    id: "4-2",
+    name: "Sho'rchi Meteo Station",
+    location: "Sho'rchi, Uzbekistan",
+    coordinates: "40.1234°N, 66.5678°E",
+    status: "active" as const,
+    elevation: 950,
+    established: 1981,
+  },
+  {
+    id: "3-2",
+    name: "Sherobod Meteo Station",
+    location: "Sherobod, Uzbekistan",
+    coordinates: "37.9012°N, 67.3456°E",
+    status: "active" as const,
+    elevation: 750,
+    established: 1981,
+  },
 ];
 
 const useStyles = createUseStyles({
@@ -123,8 +141,11 @@ const MeteoDataDetailsPage: React.FC = () => {
     navigate(`/rivers/${id}/meteo-stations`);
   };
 
-  // Only show data for Denov Meteo Station (stationId === "1-2")
-  if (stationId !== "1-2" || !station) {
+  // Only show data for specific meteo stations
+  if (
+    (stationId !== "1-2" && stationId !== "4-2" && stationId !== "3-2") ||
+    !station
+  ) {
     return (
       <div className={classes.pageContainer}>
         <div className={classes.header}>
@@ -218,7 +239,7 @@ const MeteoDataDetailsPage: React.FC = () => {
       </Card>
 
       <Card title="Meteorological Data" className={classes.contentCard}>
-        <MeteoDataTables />
+        <MeteoDataTables stationId={stationId} />
       </Card>
     </div>
   );

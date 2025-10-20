@@ -276,61 +276,61 @@ const RiversPage: React.FC = () => {
       key: "continent",
       sorter: (a: River, b: River) => a.continent.localeCompare(b.continent),
     },
-    {
-      title: "Status",
-      dataIndex: "status",
-      key: "status",
-      render: (status: string) => (
-        <span
-          className={`${classes.statusTag} ${
-            status === "active" ? classes.activeStatus : classes.inactiveStatus
-          }`}
-        >
-          {status}
-        </span>
-      ),
-    },
+    // {
+    //   title: "Status",
+    //   dataIndex: "status",
+    //   key: "status",
+    //   render: (status: string) => (
+    //     <span
+    //       className={`${classes.statusTag} ${
+    //         status === "active" ? classes.activeStatus : classes.inactiveStatus
+    //       }`}
+    //     >
+    //       {status}
+    //     </span>
+    //   ),
+    // },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
       ellipsis: true,
     },
-    {
-      title: "Actions",
-      key: "actions",
-      render: (_: any, record: River) => (
-        <div className={classes.actionButtons}>
-          <Button
-            type="link"
-            icon={<EditOutlined />}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleEdit(record);
-            }}
-          >
-            Edit
-          </Button>
-          <Popconfirm
-            title="Are you sure you want to delete this river?"
-            onConfirm={() => handleDelete(record.id)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-              type="link"
-              danger
-              icon={<DeleteOutlined />}
-            >
-              Delete
-            </Button>
-          </Popconfirm>
-        </div>
-      ),
-    },
+    // {
+    //   title: "Actions",
+    //   key: "actions",
+    //   render: (_: any, record: River) => (
+    //     <div className={classes.actionButtons}>
+    //       <Button
+    //         type="link"
+    //         icon={<EditOutlined />}
+    //         onClick={(e) => {
+    //           e.stopPropagation();
+    //           handleEdit(record);
+    //         }}
+    //       >
+    //         Edit
+    //       </Button>
+    //       <Popconfirm
+    //         title="Are you sure you want to delete this river?"
+    //         onConfirm={() => handleDelete(record.id)}
+    //         okText="Yes"
+    //         cancelText="No"
+    //       >
+    //         <Button
+    //           onClick={(e) => {
+    //             e.stopPropagation();
+    //           }}
+    //           type="link"
+    //           danger
+    //           icon={<DeleteOutlined />}
+    //         >
+    //           Delete
+    //         </Button>
+    //       </Popconfirm>
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (
@@ -348,13 +348,13 @@ const RiversPage: React.FC = () => {
                   style={{ width: 300 }}
                   enterButton={<SearchOutlined />}
                 />
-                <Button
+                {/* <Button
                   type="primary"
                   icon={<PlusOutlined />}
                   onClick={handleAdd}
                 >
                   Add River
-                </Button>
+                </Button> */}
               </Flex>
             </Flex>
           )}

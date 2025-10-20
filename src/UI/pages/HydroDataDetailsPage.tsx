@@ -9,6 +9,8 @@ import { createUseStyles } from "react-jss";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 import HydroDataTable from "../components/HydroDataTable/HydroDataTable";
+import KenguzarHydroDataTable from "../components/KenguzarHydroDataTable/KenguzarHydroDataTable";
+import BazarjayHydroDataTable from "../components/BazarjayHydroDataTable/BazarjayHydroDataTable";
 import { Color } from "../../assets/colors";
 
 const { Title, Text } = Typography;
@@ -32,6 +34,24 @@ const mockHydroStations = [
     status: "operational",
     yearBuilt: 1980,
     river: "Qoratog river",
+  },
+  {
+    id: "2-1",
+    name: "Kenguzar Hydro Post",
+    location: "Kenguzar, Uzbekistan",
+    capacity: 0,
+    status: "operational",
+    yearBuilt: 1928,
+    river: "Sangardak river",
+  },
+  {
+    id: "4-1",
+    name: "Bazarjay Hydro Post",
+    location: "Bazarjay, Uzbekistan",
+    capacity: 0,
+    status: "operational",
+    yearBuilt: 1960,
+    river: "Xalkadjar river",
   },
 ];
 
@@ -123,8 +143,11 @@ const HydroDataDetailsPage: React.FC = () => {
     navigate(`/rivers/${id}/hydro-stations`);
   };
 
-  // Only show data for Qoratog Uste Hydro Post (stationId === "1-1")
-  if (stationId !== "1-1" || !station) {
+  // Only show data for specific hydro posts
+  if (
+    (stationId !== "1-1" && stationId !== "2-1" && stationId !== "4-1") ||
+    !station
+  ) {
     return (
       <div className={classes.pageContainer}>
         <div className={classes.header}>
@@ -195,7 +218,15 @@ const HydroDataDetailsPage: React.FC = () => {
           <div>
             <Text strong>Data Period:</Text>
             <br />
-            <Text type="secondary">1983 - 2020 (38 years)</Text>
+            <Text type="secondary">
+              {stationId === "1-1"
+                ? "1983 - 2020 (38 years)"
+                : stationId === "2-1"
+                ? "1928 - 2020 (93 years)"
+                : stationId === "4-1"
+                ? "1960 - 2020 (61 years)"
+                : "N/A"}
+            </Text>
           </div>
           <div>
             <Text strong>Measurement Unit:</Text>
@@ -211,7 +242,9 @@ const HydroDataDetailsPage: React.FC = () => {
       </Card>
 
       <Card title="Monthly Flow Rates" className={classes.contentCard}>
-        <HydroDataTable />
+        {stationId === "1-1" && <HydroDataTable />}
+        {stationId === "2-1" && <KenguzarHydroDataTable />}
+        {stationId === "4-1" && <BazarjayHydroDataTable />}
       </Card>
     </div>
   );

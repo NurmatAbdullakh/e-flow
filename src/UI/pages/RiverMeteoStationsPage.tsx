@@ -36,6 +36,7 @@ interface MeteoStation {
   status: "active" | "maintenance" | "inactive";
   elevation: number;
   established: number;
+  river: string;
 }
 
 // Mock data for meteo stations
@@ -57,6 +58,27 @@ const mockMeteoStations = [
     status: "active" as const,
     elevation: 850,
     established: 1988,
+    river: "Qoratog river",
+  },
+  {
+    id: "4-2",
+    name: "Sho'rchi Meteo Station",
+    location: "Sho'rchi, Uzbekistan",
+    coordinates: "40.1234°N, 66.5678°E",
+    status: "active" as const,
+    elevation: 950,
+    established: 1981,
+    river: "Xalkadjar river",
+  },
+  {
+    id: "3-2",
+    name: "Sherobod Meteo Station",
+    location: "Sherobod, Uzbekistan",
+    coordinates: "37.9012°N, 67.3456°E",
+    status: "active" as const,
+    elevation: 750,
+    established: 1981,
+    river: "Sherobod river",
   },
   // {
   //   id: "2",
@@ -215,19 +237,40 @@ const RiverMeteoStationsPage: React.FC = () => {
     };
   }, [id, setRiverContext, clearRiverContext]);
 
-  // Filter stations based on search text
+  // Filter stations based on river ID and search text
   useEffect(() => {
-    if (searchText) {
-      const filtered = stations.filter(
-        (station) =>
-          station.name.toLowerCase().includes(searchText.toLowerCase()) ||
-          station.location.toLowerCase().includes(searchText.toLowerCase())
+    if (id) {
+      // Get river name based on ID
+      const riverNames: { [key: string]: string } = {
+        "1": "Qoratog river",
+        "2": "Sangardak river",
+        "3": "Sherobod river",
+        "4": "Xalkadjar river",
+        "5": "Boysun river",
+        "6": "Denov river",
+        "7": "Sho'rchi river",
+      };
+      const currentRiver = riverNames[id];
+
+      // First filter by river
+      let riverFiltered = stations.filter(
+        (station) => station.river === currentRiver
       );
-      setFilteredStations(filtered);
+
+      // Then filter by search text if provided
+      if (searchText) {
+        riverFiltered = riverFiltered.filter(
+          (station) =>
+            station.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            station.location.toLowerCase().includes(searchText.toLowerCase())
+        );
+      }
+
+      setFilteredStations(riverFiltered);
     } else {
       setFilteredStations(stations);
     }
-  }, [searchText, stations]);
+  }, [searchText, stations, id]);
 
   const handleBack = () => {
     navigate(`/rivers/${id}`);
@@ -270,9 +313,19 @@ const RiverMeteoStationsPage: React.FC = () => {
         message.success("Meteo station updated successfully");
       } else {
         // Add new station
+        const riverNames: { [key: string]: string } = {
+          "1": "Qoratog river",
+          "2": "Sangardak river",
+          "3": "Sherobod river",
+          "4": "Xalkadjar river",
+          "5": "Boysun river",
+          "6": "Denov river",
+          "7": "Sho'rchi river",
+        };
         const newStation: MeteoStation = {
           id: Date.now().toString(),
           ...values,
+          river: id ? riverNames[id] || "Unknown river" : "Unknown river",
         };
         setStations([...stations, newStation]);
         message.success("Meteo station added successfully");
@@ -379,7 +432,24 @@ const RiverMeteoStationsPage: React.FC = () => {
           Back to River Details
         </Button>
         <div className={classes.riverInfo}>
-          <h1 className={classes.riverName}>Meteo Stations</h1>
+          <h1 className={classes.riverName}>
+            {id
+              ? (() => {
+                  const riverNames: { [key: string]: string } = {
+                    "1": "Qoratog river",
+                    "2": "Sangardak river",
+                    "3": "Sherobod river",
+                    "4": "Xalkadjar river",
+                    "5": "Boysun river",
+                    "6": "Denov river",
+                    "7": "Sho'rchi river",
+                  };
+                  return `${
+                    riverNames[id] || "Unknown river"
+                  } - Meteo Stations`;
+                })()
+              : "Meteo Stations"}
+          </h1>
           <div className={classes.riverLocation}>
             <EnvironmentOutlined />
             <span>Uzbekistan River Basin</span>
@@ -392,7 +462,24 @@ const RiverMeteoStationsPage: React.FC = () => {
       <Card
         title={
           <Flex justify="space-between" align="center">
-            <h2 style={{ margin: 0 }}>Meteorological Stations</h2>
+            <h2 style={{ margin: 0 }}>
+              {id
+                ? (() => {
+                    const riverNames: { [key: string]: string } = {
+                      "1": "Qoratog river",
+                      "2": "Sangardak river",
+                      "3": "Sherobod river",
+                      "4": "Xalkadjar river",
+                      "5": "Boysun river",
+                      "6": "Denov river",
+                      "7": "Sho'rchi river",
+                    };
+                    return `${
+                      riverNames[id] || "Unknown river"
+                    } Meteo Stations`;
+                  })()
+                : "Meteorological Stations"}
+            </h2>
             <Flex gap={16}>
               <Input.Search
                 placeholder="Search meteo stations..."
@@ -419,8 +506,12 @@ const RiverMeteoStationsPage: React.FC = () => {
           rowKey="id"
           onRow={(record) => ({
             onClick: () => {
-              // Navigate to details page for Denov Meteo Station
-              if (record.id === "1-2") {
+              // Navigate to details page for specific meteo stations
+              if (
+                record.id === "1-2" ||
+                record.id === "4-2" ||
+                record.id === "3-2"
+              ) {
                 navigate(
                   `${PathGenerators.RIVER_METEO_DATA_DETAILS(
                     id || "1"
@@ -429,8 +520,18 @@ const RiverMeteoStationsPage: React.FC = () => {
               }
             },
             style: {
-              cursor: record.id === "1-2" ? "pointer" : "default",
-              backgroundColor: record.id === "1-2" ? "#f0f8ff" : "transparent",
+              cursor:
+                record.id === "1-2" ||
+                record.id === "4-2" ||
+                record.id === "3-2"
+                  ? "pointer"
+                  : "default",
+              backgroundColor:
+                record.id === "1-2" ||
+                record.id === "4-2" ||
+                record.id === "3-2"
+                  ? "#f0f8ff"
+                  : "transparent",
             },
           })}
           pagination={{

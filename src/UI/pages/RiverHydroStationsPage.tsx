@@ -58,15 +58,33 @@ const mockHydroStations = [
     yearBuilt: 1980,
     river: "Qoratog river",
   },
-  // {
-  //   id: "2",
-  //   name: "Sangardak Power Plant",
-  //   location: "Sangardak Valley, Uzbekistan",
-  //   capacity: 32,
-  //   status: "operational",
-  //   yearBuilt: 1992,
-  //   river: "Sangardak river",
-  // },
+  {
+    id: "2-1",
+    name: "Kenguzar Hydro Post",
+    location: "Kenguzar, Uzbekistan",
+    capacity: 0,
+    status: "operational",
+    yearBuilt: 1928,
+    river: "Sangardak river",
+  },
+  {
+    id: "3-1",
+    name: "Darband Hydro Post",
+    location: "Darband, Uzbekistan",
+    capacity: 0,
+    status: "operational",
+    yearBuilt: 1958,
+    river: "Sherobod river",
+  },
+  {
+    id: "4-1",
+    name: "Bazarjay Hydro Post",
+    location: "Bazarjay, Uzbekistan",
+    capacity: 0,
+    status: "operational",
+    yearBuilt: 1960,
+    river: "Xalkadjar river",
+  },
   // {
   //   id: "3",
   //   name: "Sherobod Dam",
@@ -224,19 +242,40 @@ const RiverHydroStationsPage: React.FC = () => {
     };
   }, [id, setRiverContext, clearRiverContext]);
 
-  // Filter stations based on search text
+  // Filter stations based on river ID and search text
   useEffect(() => {
-    if (searchText) {
-      const filtered = stations.filter(
-        (station) =>
-          station.name.toLowerCase().includes(searchText.toLowerCase()) ||
-          station.location.toLowerCase().includes(searchText.toLowerCase())
+    if (id) {
+      // Get river name based on ID
+      const riverNames: { [key: string]: string } = {
+        "1": "Qoratog river",
+        "2": "Sangardak river",
+        "3": "Sherobod river",
+        "4": "Xalkadjar river",
+        "5": "Boysun river",
+        "6": "Denov river",
+        "7": "Sho'rchi river",
+      };
+      const currentRiver = riverNames[id];
+
+      // First filter by river
+      let riverFiltered = stations.filter(
+        (station) => station.river === currentRiver
       );
-      setFilteredStations(filtered);
+
+      // Then filter by search text if provided
+      if (searchText) {
+        riverFiltered = riverFiltered.filter(
+          (station) =>
+            station.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            station.location.toLowerCase().includes(searchText.toLowerCase())
+        );
+      }
+
+      setFilteredStations(riverFiltered);
     } else {
       setFilteredStations(stations);
     }
-  }, [searchText, stations]);
+  }, [searchText, stations, id]);
 
   const handleBack = () => {
     navigate(`/rivers/${id}`);
@@ -393,7 +432,24 @@ const RiverHydroStationsPage: React.FC = () => {
           Back to River Details
         </Button>
         <div className={classes.riverInfo}>
-          <h1 className={classes.riverName}>Hydro Stations</h1>
+          <h1 className={classes.riverName}>
+            {id
+              ? (() => {
+                  const riverNames: { [key: string]: string } = {
+                    "1": "Qoratog river",
+                    "2": "Sangardak river",
+                    "3": "Sherobod river",
+                    "4": "Xalkadjar river",
+                    "5": "Boysun river",
+                    "6": "Denov river",
+                    "7": "Sho'rchi river",
+                  };
+                  return `${
+                    riverNames[id] || "Unknown river"
+                  } - Hydro Stations`;
+                })()
+              : "Hydro Stations"}
+          </h1>
           <div className={classes.riverLocation}>
             <EnvironmentOutlined />
             <span>Uzbekistan River Basin</span>
@@ -406,7 +462,24 @@ const RiverHydroStationsPage: React.FC = () => {
       <Card
         title={
           <Flex justify="space-between" align="center">
-            <h2 style={{ margin: 0 }}>Hydroelectric Power Stations</h2>
+            <h2 style={{ margin: 0 }}>
+              {id
+                ? (() => {
+                    const riverNames: { [key: string]: string } = {
+                      "1": "Qoratog river",
+                      "2": "Sangardak river",
+                      "3": "Sherobod river",
+                      "4": "Xalkadjar river",
+                      "5": "Boysun river",
+                      "6": "Denov river",
+                      "7": "Sho'rchi river",
+                    };
+                    return `${
+                      riverNames[id] || "Unknown river"
+                    } Hydro Stations`;
+                  })()
+                : "Hydroelectric Power Stations"}
+            </h2>
             <Flex gap={16}>
               <Input.Search
                 placeholder="Search hydro stations..."
@@ -433,8 +506,13 @@ const RiverHydroStationsPage: React.FC = () => {
           rowKey="id"
           onRow={(record) => ({
             onClick: () => {
-              // Navigate to details page only for Qoratog Uste Hydro Post
-              if (record.id === "1-1") {
+              // Navigate to details page for specific hydro posts
+              if (
+                record.id === "1-1" ||
+                record.id === "2-1" ||
+                record.id === "3-1" ||
+                record.id === "4-1"
+              ) {
                 navigate(
                   `${PathGenerators.RIVER_HYDRO_DATA_DETAILS(
                     id || "1"
@@ -443,8 +521,20 @@ const RiverHydroStationsPage: React.FC = () => {
               }
             },
             style: {
-              cursor: record.id === "1-1" ? "pointer" : "default",
-              backgroundColor: record.id === "1-1" ? "#f0f8ff" : "transparent",
+              cursor:
+                record.id === "1-1" ||
+                record.id === "2-1" ||
+                record.id === "3-1" ||
+                record.id === "4-1"
+                  ? "pointer"
+                  : "default",
+              backgroundColor:
+                record.id === "1-1" ||
+                record.id === "2-1" ||
+                record.id === "3-1" ||
+                record.id === "4-1"
+                  ? "#f0f8ff"
+                  : "transparent",
             },
           })}
           pagination={{
