@@ -1,20 +1,6 @@
-import React, { useState, useEffect } from "react";
-import {
-  Table,
-  Button,
-  Modal,
-  Input,
-  Form,
-  message,
-  Popconfirm,
-  Flex,
-} from "antd";
-import {
-  PlusOutlined,
-  EditOutlined,
-  DeleteOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
+import { Flex, Form, Input, message, Modal, Table } from "antd";
+import React, { useEffect, useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useNavigate } from "react-router-dom";
 import { Color } from "../../assets/colors";
@@ -188,24 +174,24 @@ const RiversPage: React.FC = () => {
   }, [searchText, rivers]);
 
   // Handle add new river
-  const handleAdd = () => {
-    setEditingRiver(null);
-    form.resetFields();
-    setIsModalVisible(true);
-  };
+  // const handleAdd = () => {
+  //   setEditingRiver(null);
+  //   form.resetFields();
+  //   setIsModalVisible(true);
+  // };
 
-  // Handle edit river
-  const handleEdit = (record: River) => {
-    setEditingRiver(record);
-    form.setFieldsValue(record);
-    setIsModalVisible(true);
-  };
+  // // Handle edit river
+  // const handleEdit = (record: River) => {
+  //   setEditingRiver(record);
+  //   form.setFieldsValue(record);
+  //   setIsModalVisible(true);
+  // };
 
   // Handle delete river
-  const handleDelete = (id: string) => {
-    setRivers(rivers.filter((river) => river.id !== id));
-    message.success("River deleted successfully");
-  };
+  // const handleDelete = (id: string) => {
+  //   setRivers(rivers.filter((river) => river.id !== id));
+  //   message.success("River deleted successfully");
+  // };
 
   // Handle modal submit
   const handleModalSubmit = async () => {

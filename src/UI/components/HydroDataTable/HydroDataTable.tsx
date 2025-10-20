@@ -1,5 +1,5 @@
+import { Select, Table, Typography } from "antd";
 import React, { useState } from "react";
-import { Table, Card, Select, Space, Typography } from "antd";
 import { createUseStyles } from "react-jss";
 
 const { Title } = Typography;
