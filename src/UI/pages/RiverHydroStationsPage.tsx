@@ -25,6 +25,7 @@ import { createUseStyles } from "react-jss";
 import { useNavigate, useParams } from "react-router-dom";
 import { Color } from "../../assets/colors";
 import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
+import { PathGenerators } from "../../router/paths";
 
 // Hydro station data type
 interface HydroStation {
@@ -39,42 +40,78 @@ interface HydroStation {
 
 // Mock data for hydro stations
 const mockHydroStations = [
+  // {
+  //   id: "1",
+  //   name: "Qoratog Hydro Station",
+  //   location: "Qoratog, Uzbekistan",
+  //   capacity: 45,
+  //   status: "operational",
+  //   yearBuilt: 1985,
+  //   river: "Qoratog river",
+  // },
   {
-    id: "1",
-    name: "Aswan High Dam",
-    location: "Aswan, Egypt",
-    capacity: 2100,
+    id: "1-1",
+    name: "Qoratog Uste Hydro Post",
+    location: "Qoratog Uste, Uzbekistan",
+    capacity: 0,
     status: "operational",
-    yearBuilt: 1970,
-    river: "Nile",
+    yearBuilt: 1980,
+    river: "Qoratog river",
   },
-  {
-    id: "2",
-    name: "Roseires Dam",
-    location: "Blue Nile, Sudan",
-    capacity: 1800,
-    status: "operational",
-    yearBuilt: 1966,
-    river: "Nile",
-  },
-  {
-    id: "3",
-    name: "Sennar Dam",
-    location: "Blue Nile, Sudan",
-    capacity: 15,
-    status: "operational",
-    yearBuilt: 1925,
-    river: "Nile",
-  },
-  {
-    id: "4",
-    name: "Jinja Dam",
-    location: "Jinja, Uganda",
-    capacity: 180,
-    status: "operational",
-    yearBuilt: 1954,
-    river: "Nile",
-  },
+  // {
+  //   id: "2",
+  //   name: "Sangardak Power Plant",
+  //   location: "Sangardak Valley, Uzbekistan",
+  //   capacity: 32,
+  //   status: "operational",
+  //   yearBuilt: 1992,
+  //   river: "Sangardak river",
+  // },
+  // {
+  //   id: "3",
+  //   name: "Sherobod Dam",
+  //   location: "Sherobod District, Uzbekistan",
+  //   capacity: 78,
+  //   status: "operational",
+  //   yearBuilt: 1988,
+  //   river: "Sherobod river",
+  // },
+  // {
+  //   id: "4",
+  //   name: "Xalkadjar Station",
+  //   location: "Xalkadjar, Uzbekistan",
+  //   capacity: 28,
+  //   status: "maintenance",
+  //   yearBuilt: 1995,
+  //   river: "Xalkadjar river",
+  // },
+  // {
+  //   id: "5",
+  //   name: "Boysun Hydro Plant",
+  //   location: "Boysun, Uzbekistan",
+  //   capacity: 52,
+  //   status: "operational",
+  //   yearBuilt: 1990,
+  //   river: "Boysun river",
+  // },
+  // {
+  //   id: "6",
+  //   name: "Denov Power Station",
+  //   location: "Denov, Uzbekistan",
+  //   capacity: 38,
+  //   status: "operational",
+  //   yearBuilt: 1987,
+  //   river: "Denov river",
+  // },
+  // {
+  //   id: "7",
+  //   name: "Sho'rchi Dam",
+  //   location: "Sho'rchi, Uzbekistan",
+  //   capacity: 25,
+  //   status: "operational",
+  //   yearBuilt: 1993,
+  //   river: "Sho'rchi river",
+  // },
 ];
 
 const useStyles = createUseStyles({
@@ -167,7 +204,17 @@ const RiverHydroStationsPage: React.FC = () => {
   // Set river context when component mounts
   useEffect(() => {
     if (id) {
-      setRiverContext("Nile", id); // In real app, fetch river name by ID
+      // Get river name based on ID
+      const riverNames: { [key: string]: string } = {
+        "1": "Qoratog river",
+        "2": "Sangardak river",
+        "3": "Sherobod river",
+        "4": "Xalkadjar river",
+        "5": "Boysun river",
+        "6": "Denov river",
+        "7": "Sho'rchi river",
+      };
+      setRiverContext(riverNames[id] || "Unknown river", id);
     } else {
       clearRiverContext();
     }
@@ -232,9 +279,18 @@ const RiverHydroStationsPage: React.FC = () => {
         message.success("Hydro station updated successfully");
       } else {
         // Add new station
+        const riverNames: { [key: string]: string } = {
+          "1": "Qoratog river",
+          "2": "Sangardak river",
+          "3": "Sherobod river",
+          "4": "Xalkadjar river",
+          "5": "Boysun river",
+          "6": "Denov river",
+          "7": "Sho'rchi river",
+        };
         const newStation: HydroStation = {
           id: Date.now().toString(),
-          river: "Nile", // In real app, get from context
+          river: riverNames[id || "1"] || "Unknown river", // Get from context
           ...values,
         };
         setStations([...stations, newStation]);
@@ -340,9 +396,9 @@ const RiverHydroStationsPage: React.FC = () => {
           <h1 className={classes.riverName}>Hydro Stations</h1>
           <div className={classes.riverLocation}>
             <EnvironmentOutlined />
-            <span>Nile River Basin</span>
+            <span>Uzbekistan River Basin</span>
             <GlobalOutlined />
-            <span>Multiple Countries</span>
+            <span>Uzbekistan</span>
           </div>
         </div>
       </div>
@@ -375,6 +431,22 @@ const RiverHydroStationsPage: React.FC = () => {
           columns={columns}
           dataSource={filteredStations}
           rowKey="id"
+          onRow={(record) => ({
+            onClick: () => {
+              // Navigate to details page only for Qoratog Uste Hydro Post
+              if (record.id === "1-1") {
+                navigate(
+                  `${PathGenerators.RIVER_HYDRO_DATA_DETAILS(
+                    id || "1"
+                  )}?stationId=${record.id}`
+                );
+              }
+            },
+            style: {
+              cursor: record.id === "1-1" ? "pointer" : "default",
+              backgroundColor: record.id === "1-1" ? "#f0f8ff" : "transparent",
+            },
+          })}
           pagination={{
             pageSize: 10,
             showSizeChanger: true,

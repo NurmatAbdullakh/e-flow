@@ -7,6 +7,8 @@ import RiverDetailsPage from "../UI/pages/RiverDetailsPage";
 import RiverHydroStationsPage from "../UI/pages/RiverHydroStationsPage";
 import RiverMeteoStationsPage from "../UI/pages/RiverMeteoStationsPage";
 import RiversPage from "../UI/pages/RiversPage";
+import HydroDataDetailsPage from "../UI/pages/HydroDataDetailsPage";
+import MeteoDataDetailsPage from "../UI/pages/MeteoDataDetailsPage";
 import { Paths } from "./paths";
 
 // Create a reusable loading component
@@ -108,10 +110,26 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: Paths.RIVER_HYDRO_DATA_DETAILS,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <HydroDataDetailsPage />
+          </Suspense>
+        ),
+      },
+      {
         path: Paths.RIVER_METEO_STATIONS,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
             <RiverMeteoStationsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: Paths.RIVER_METEO_DATA_DETAILS,
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <MeteoDataDetailsPage />
           </Suspense>
         ),
       },

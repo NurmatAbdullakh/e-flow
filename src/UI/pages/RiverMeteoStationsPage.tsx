@@ -25,6 +25,7 @@ import {
 import { createUseStyles } from "react-jss";
 import { Color } from "../../assets/colors";
 import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
+import { PathGenerators } from "../../router/paths";
 
 // Meteo station data type
 interface MeteoStation {
@@ -39,42 +40,78 @@ interface MeteoStation {
 
 // Mock data for meteo stations
 const mockMeteoStations = [
+  // {
+  //   id: "1",
+  //   name: "Qoratog Weather Station",
+  //   location: "Qoratog, Uzbekistan",
+  //   coordinates: "39.1234°N, 66.7890°E",
+  //   status: "active" as const,
+  //   elevation: 1250,
+  //   established: 1980,
+  // },
   {
-    id: "1",
-    name: "Cairo Weather Station",
-    location: "Cairo, Egypt",
-    coordinates: "30.0444°N, 31.2357°E",
+    id: "1-2",
+    name: "Denov Meteo Station",
+    location: "Denov, Uzbekistan",
+    coordinates: "38.3456°N, 67.2345°E",
     status: "active" as const,
-    elevation: 23,
-    established: 1950,
+    elevation: 850,
+    established: 1988,
   },
-  {
-    id: "2",
-    name: "Aswan Meteorological Station",
-    location: "Aswan, Egypt",
-    coordinates: "24.0889°N, 32.8997°E",
-    status: "active" as const,
-    elevation: 194,
-    established: 1960,
-  },
-  {
-    id: "3",
-    name: "Khartoum Weather Center",
-    location: "Khartoum, Sudan",
-    coordinates: "15.5007°N, 32.5599°E",
-    status: "active" as const,
-    elevation: 381,
-    established: 1940,
-  },
-  {
-    id: "4",
-    name: "Jinja Climate Station",
-    location: "Jinja, Uganda",
-    coordinates: "0.4244°N, 33.2042°E",
-    status: "maintenance" as const,
-    elevation: 1134,
-    established: 1975,
-  },
+  // {
+  //   id: "2",
+  //   name: "Sangardak Meteorological Station",
+  //   location: "Sangardak Valley, Uzbekistan",
+  //   coordinates: "38.5678°N, 67.1234°E",
+  //   status: "active" as const,
+  //   elevation: 980,
+  //   established: 1985,
+  // },
+  // {
+  //   id: "3",
+  //   name: "Sherobod Weather Center",
+  //   location: "Sherobod District, Uzbekistan",
+  //   coordinates: "37.9012°N, 67.3456°E",
+  //   status: "active" as const,
+  //   elevation: 750,
+  //   established: 1978,
+  // },
+  // {
+  //   id: "4",
+  //   name: "Xalkadjar Climate Station",
+  //   location: "Xalkadjar, Uzbekistan",
+  //   coordinates: "40.2345°N, 66.5678°E",
+  //   status: "maintenance" as const,
+  //   elevation: 1100,
+  //   established: 1990,
+  // },
+  // {
+  //   id: "5",
+  //   name: "Boysun Weather Station",
+  //   location: "Boysun, Uzbekistan",
+  //   coordinates: "38.2012°N, 67.1987°E",
+  //   status: "active" as const,
+  //   elevation: 1350,
+  //   established: 1982,
+  // },
+  // {
+  //   id: "6",
+  //   name: "Denov Meteorological Center",
+  //   location: "Denov, Uzbekistan",
+  //   coordinates: "38.3456°N, 67.2345°E",
+  //   status: "active" as const,
+  //   elevation: 850,
+  //   established: 1988,
+  // },
+  // {
+  //   id: "7",
+  //   name: "Sho'rchi Climate Station",
+  //   location: "Sho'rchi, Uzbekistan",
+  //   coordinates: "39.4567°N, 66.3456°E",
+  //   status: "active" as const,
+  //   elevation: 950,
+  //   established: 1991,
+  // },
 ];
 
 const useStyles = createUseStyles({
@@ -158,7 +195,17 @@ const RiverMeteoStationsPage: React.FC = () => {
   // Set river context when component mounts
   useEffect(() => {
     if (id) {
-      setRiverContext("Nile", id); // In real app, fetch river name by ID
+      // Get river name based on ID
+      const riverNames: { [key: string]: string } = {
+        "1": "Qoratog river",
+        "2": "Sangardak river",
+        "3": "Sherobod river",
+        "4": "Xalkadjar river",
+        "5": "Boysun river",
+        "6": "Denov river",
+        "7": "Sho'rchi river",
+      };
+      setRiverContext(riverNames[id] || "Unknown river", id);
     } else {
       clearRiverContext();
     }
@@ -335,9 +382,9 @@ const RiverMeteoStationsPage: React.FC = () => {
           <h1 className={classes.riverName}>Meteo Stations</h1>
           <div className={classes.riverLocation}>
             <EnvironmentOutlined />
-            <span>Nile River Basin</span>
+            <span>Uzbekistan River Basin</span>
             <GlobalOutlined />
-            <span>Multiple Countries</span>
+            <span>Uzbekistan</span>
           </div>
         </div>
       </div>
@@ -370,6 +417,22 @@ const RiverMeteoStationsPage: React.FC = () => {
           columns={columns}
           dataSource={filteredStations}
           rowKey="id"
+          onRow={(record) => ({
+            onClick: () => {
+              // Navigate to details page for Denov Meteo Station
+              if (record.id === "1-2") {
+                navigate(
+                  `${PathGenerators.RIVER_METEO_DATA_DETAILS(
+                    id || "1"
+                  )}?stationId=${record.id}`
+                );
+              }
+            },
+            style: {
+              cursor: record.id === "1-2" ? "pointer" : "default",
+              backgroundColor: record.id === "1-2" ? "#f0f8ff" : "transparent",
+            },
+          })}
           pagination={{
             pageSize: 10,
             showSizeChanger: true,

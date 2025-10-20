@@ -16,55 +16,96 @@ const { Title, Text } = Typography;
 const mockRivers = [
   {
     id: "1",
-    name: "Nile",
-    length: 6650,
-    country: "Egypt",
-    continent: "Africa",
-    description: "The longest river in the world",
+    name: "Qoratog river",
+    length: 245,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description: "A mountain river flowing through the Qoratog region",
     status: "active",
-    source: "Lake Victoria",
-    mouth: "Mediterranean Sea",
-    basinSize: 3254555,
-    averageDischarge: 2830,
+    source: "Qoratog Mountains",
+    mouth: "Amu Darya",
+    basinSize: 1250,
+    averageDischarge: 45,
   },
   {
     id: "2",
-    name: "Amazon",
-    length: 6400,
-    country: "Brazil",
-    continent: "South America",
-    description: "The largest river by discharge volume",
+    name: "Sangardak river",
+    length: 180,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description: "A river in the Sangardak valley with rich water resources",
     status: "active",
-    source: "Mantaro River",
-    mouth: "Atlantic Ocean",
-    basinSize: 7050000,
-    averageDischarge: 209000,
+    source: "Sangardak Valley",
+    mouth: "Surkhandarya",
+    basinSize: 980,
+    averageDischarge: 32,
   },
   {
     id: "3",
-    name: "Yangtze",
-    length: 6300,
-    country: "China",
+    name: "Sherobod river",
+    length: 320,
+    country: "Uzbekistan",
     continent: "Asia",
-    description: "The longest river in Asia",
+    description: "An important river in the Sherobod district",
     status: "active",
-    source: "Jari Hill",
-    mouth: "East China Sea",
-    basinSize: 1800000,
-    averageDischarge: 31900,
+    source: "Sherobod Mountains",
+    mouth: "Amu Darya",
+    basinSize: 2100,
+    averageDischarge: 78,
   },
   {
     id: "4",
-    name: "Mississippi",
-    length: 6275,
-    country: "United States",
-    continent: "North America",
-    description: "The second longest river in North America",
+    name: "Xalkadjar river",
+    length: 195,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description: "A river flowing through the Xalkadjar region",
     status: "inactive",
-    source: "Lake Itasca",
-    mouth: "Gulf of Mexico",
-    basinSize: 2980000,
-    averageDischarge: 16792,
+    source: "Xalkadjar Hills",
+    mouth: "Zarafshan",
+    basinSize: 850,
+    averageDischarge: 28,
+  },
+  {
+    id: "5",
+    name: "Boysun river",
+    length: 280,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description:
+      "A river flowing through the Boysun region with historical significance",
+    status: "active",
+    source: "Boysun Mountains",
+    mouth: "Amu Darya",
+    basinSize: 1650,
+    averageDischarge: 52,
+  },
+  {
+    id: "6",
+    name: "Denov river",
+    length: 220,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description:
+      "A river in the Denov district providing water for agriculture",
+    status: "active",
+    source: "Denov Valley",
+    mouth: "Surkhandarya",
+    basinSize: 1200,
+    averageDischarge: 38,
+  },
+  {
+    id: "7",
+    name: "Sho'rchi river",
+    length: 165,
+    country: "Uzbekistan",
+    continent: "Asia",
+    description: "A river flowing through the Sho'rchi region",
+    status: "active",
+    source: "Sho'rchi Hills",
+    mouth: "Zarafshan",
+    basinSize: 750,
+    averageDischarge: 25,
   },
 ];
 
@@ -245,22 +286,22 @@ const RiverDetailsPage: React.FC = () => {
             <div>
               <Text strong>Length Rank</Text>
               <br />
-              <Text type="secondary">1st longest river globally</Text>
+              <Text type="secondary">Regional river in Uzbekistan</Text>
             </div>
             <div>
               <Text strong>Discharge Volume</Text>
               <br />
-              <Text type="secondary">2nd highest globally</Text>
+              <Text type="secondary">Moderate flow rate</Text>
             </div>
             <div>
               <Text strong>Countries</Text>
               <br />
-              <Text type="secondary">11 countries</Text>
+              <Text type="secondary">Uzbekistan</Text>
             </div>
             <div>
               <Text strong>Major Cities</Text>
               <br />
-              <Text type="secondary">Cairo, Alexandria, Luxor</Text>
+              <Text type="secondary">Regional settlements</Text>
             </div>
           </Space>
         </Card>

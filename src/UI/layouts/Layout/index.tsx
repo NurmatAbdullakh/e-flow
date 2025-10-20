@@ -1,10 +1,9 @@
 import { Layout as AntLayout } from "antd";
 import { createUseStyles } from "react-jss";
 import { Outlet, useLocation } from "react-router-dom";
-import { Header } from "./Header";
 import { Sidebar } from "./SideBar";
-import { SidebarProvider } from "./SideBar/SidebarContext";
 import { RiverSidebarProvider } from "./SideBar/RiverSidebarContext";
+import { SidebarProvider } from "./SideBar/SidebarContext";
 
 const { Content } = AntLayout;
 
@@ -53,7 +52,7 @@ const LayoutContent = () => {
     <AntLayout className={classes.layout}>
       <Sidebar />
       <Content className={classes.content}>
-        <Header />
+        {/* <Header /> */}
         <div className={classes.contentWrapper} key={location.pathname}>
           <Outlet />
         </div>
