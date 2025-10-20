@@ -3,7 +3,7 @@ import {
   EnvironmentOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Flex, Space, Typography } from "antd";
+import { Button, Card, Flex, Typography } from "antd";
 import React, { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -11,6 +11,13 @@ import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 import HydroDataTable from "../components/HydroDataTable/HydroDataTable";
 import KenguzarHydroDataTable from "../components/KenguzarHydroDataTable/KenguzarHydroDataTable";
 import BazarjayHydroDataTable from "../components/BazarjayHydroDataTable/BazarjayHydroDataTable";
+import {
+  // TimeSeriesChart,
+  BoxplotChart,
+  AnnualBarChart,
+  SeasonalBarChart,
+  HeatmapChart,
+} from "../components/HydroCharts";
 import { Color } from "../../assets/colors";
 
 const { Title, Text } = Typography;
@@ -245,6 +252,14 @@ const HydroDataDetailsPage: React.FC = () => {
         {stationId === "1-1" && <HydroDataTable />}
         {stationId === "2-1" && <KenguzarHydroDataTable />}
         {stationId === "4-1" && <BazarjayHydroDataTable />}
+      </Card>
+
+      <Card title="Data Visualization" className={classes.contentCard}>
+        {/* <TimeSeriesChart stationId={stationId} /> */}
+        <BoxplotChart stationId={stationId} />
+        <AnnualBarChart stationId={stationId} />
+        <SeasonalBarChart stationId={stationId} />
+        <HeatmapChart stationId={stationId} />
       </Card>
     </div>
   );

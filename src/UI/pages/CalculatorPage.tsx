@@ -1,5 +1,5 @@
+import { Card, Select, Space, Typography } from "antd";
 import React, { useState } from "react";
-import { Card, Select, Typography, Space, Row, Col } from "antd";
 import { createUseStyles } from "react-jss";
 import { FlowDurationCalculator } from "../components/FlowDurationCalculator";
 import { Color } from "../../assets/colors";
@@ -10,7 +10,7 @@ const { Option } = Select;
 const useStyles = createUseStyles({
   container: {
     padding: "24px",
-    backgroundColor: Color.background,
+    backgroundColor: Color.border.secondary,
     minHeight: "100vh",
   },
   header: {
@@ -21,7 +21,7 @@ const useStyles = createUseStyles({
     marginBottom: "24px",
   },
   contentCard: {
-    backgroundColor: Color.white,
+    backgroundColor: "white",
     borderRadius: "8px",
     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
   },
@@ -40,7 +40,7 @@ const CalculatorPage: React.FC = () => {
   return (
     <div className={classes.container}>
       <div className={classes.header}>
-        <Title level={1} style={{ margin: 0, color: Color.primary }}>
+        <Title level={1} style={{ margin: 0 }}>
           Flow Duration Calculator
         </Title>
         <Text type="secondary" style={{ fontSize: "16px" }}>

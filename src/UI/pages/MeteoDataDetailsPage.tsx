@@ -3,20 +3,20 @@ import {
   EnvironmentOutlined,
   GlobalOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Flex, Space, Typography } from "antd";
+import { Button, Card, Flex, Typography } from "antd";
 import React, { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
-import MeteoDataTables from "../components/MeteoDataTables/MeteoDataTables";
-import {
-  TimeSeriesChart,
-  BoxplotChart,
-  AnnualBarChart,
-  SeasonalBarChart,
-  HeatmapChart,
-} from "../components/MeteoCharts";
 import { Color } from "../../assets/colors";
+import {
+  AnnualBarChart,
+  BoxplotChart,
+  HeatmapChart,
+  SeasonalBarChart,
+  TimeSeriesChart,
+} from "../components/MeteoCharts";
+import MeteoDataTables from "../components/MeteoDataTables/MeteoDataTables";
+import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 
 const { Title, Text } = Typography;
 

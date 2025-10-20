@@ -39,7 +39,7 @@ const LoadingSpinner = () => (
 // );
 
 // Dashboard and other components
-const Dashboard = () => <PageTitle>Dashboard Page </PageTitle>;
+// const Dashboard = () => <PageTitle>Dashboard Page </PageTitle>;
 const Map = () => <PageTitle>Map Page</PageTitle>;
 const Data = () => <PageTitle>Data Page</PageTitle>;
 const About = () => <PageTitle>About Page</PageTitle>;
@@ -53,14 +53,14 @@ export const router = createBrowserRouter([
       </Suspense>
     ),
     children: [
-      {
-        path: Paths.HOME,
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <Dashboard />
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: Paths.HOME,
+      //   element: (
+      //     <Suspense fallback={<LoadingSpinner />}>
+      //       <Dashboard />
+      //     </Suspense>
+      //   ),
+      // },
       {
         path: Paths.MAP,
         element: (
@@ -118,7 +118,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: Paths.RIVER_METEO_STATIONS,
+        path: Paths.HOME,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
             <RiverMeteoStationsPage />

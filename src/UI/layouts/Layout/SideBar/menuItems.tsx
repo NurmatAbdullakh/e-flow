@@ -1,5 +1,5 @@
 import {
-  BarChartSquareIcon,
+  // BarChartSquareIcon,
   BarLineChartDottedIcon,
   HelpCircleIcon,
   LineChartUpIcon,
@@ -8,11 +8,6 @@ import {
 import { Paths } from "../../../../router/paths";
 
 const mainMenuItems = [
-  {
-    key: Paths.HOME,
-    label: "Dashboard",
-    icon: <BarChartSquareIcon />,
-  },
   {
     key: Paths.RIVERS,
     label: "Rivers",
@@ -23,6 +18,11 @@ const mainMenuItems = [
     label: "Flow Duration Calculator",
     icon: <BarLineChartDottedIcon />,
   },
+  // {
+  //   key: Paths.HOME,
+  //   label: "Dashboard",
+  //   icon: <BarChartSquareIcon />,
+  // },
   {
     key: Paths.MAP,
     label: "Map",
