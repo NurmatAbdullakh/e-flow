@@ -9,6 +9,13 @@ import { createUseStyles } from "react-jss";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useRiverSidebar } from "../layouts/Layout/SideBar/RiverSidebarContext";
 import MeteoDataTables from "../components/MeteoDataTables/MeteoDataTables";
+import {
+  TimeSeriesChart,
+  BoxplotChart,
+  AnnualBarChart,
+  SeasonalBarChart,
+  HeatmapChart,
+} from "../components/MeteoCharts";
 import { Color } from "../../assets/colors";
 
 const { Title, Text } = Typography;
@@ -240,6 +247,14 @@ const MeteoDataDetailsPage: React.FC = () => {
 
       <Card title="Meteorological Data" className={classes.contentCard}>
         <MeteoDataTables stationId={stationId} />
+      </Card>
+
+      <Card title="Data Visualization" className={classes.contentCard}>
+        <TimeSeriesChart stationId={stationId} />
+        <BoxplotChart stationId={stationId} />
+        <AnnualBarChart stationId={stationId} />
+        <SeasonalBarChart stationId={stationId} />
+        <HeatmapChart stationId={stationId} />
       </Card>
     </div>
   );

@@ -13,8 +13,10 @@ import {
   shorchiPrecipitationData,
   shorchiMinTempData,
   sherobodMaxTempData,
+  sherobodMeanTempData,
   sherobodMeanWindSpeedData,
   sherobodPrecipitationData,
+  sherobodMinTempData,
 } from "./data";
 
 const { Title } = Typography;
@@ -190,8 +192,10 @@ const MeteoDataTables: React.FC<MeteoDataTablesProps> = ({ stationId }) => {
 
   const getMeanTempData = () => {
     if (stationId === "4-2") {
-      // For now, return Denov data as placeholder - will be updated when Sho'rchi data is provided
       return shorchiMeanTempData;
+    }
+    if (stationId === "3-2") {
+      return sherobodMeanTempData;
     }
     return denovMeanTempData;
   };
@@ -219,6 +223,9 @@ const MeteoDataTables: React.FC<MeteoDataTablesProps> = ({ stationId }) => {
   const getMinTempData = () => {
     if (stationId === "4-2") {
       return shorchiMinTempData;
+    }
+    if (stationId === "3-2") {
+      return sherobodMinTempData;
     }
     return denovMinTempData;
   };
